@@ -53,6 +53,8 @@ class RollDiceAction extends Action
 
         $pusher->trigger($settings['pusher']['channel'], 'new-roll', $roll);
 
-        return $this->respondWithData($roll);
+        return $this->respondWithData($roll)
+                    ->withHeader('Access-Control-Allow-Origin', '*')
+                    ->withHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
     }
 }

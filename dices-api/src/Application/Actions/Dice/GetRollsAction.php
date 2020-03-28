@@ -25,6 +25,8 @@ class GetRollsAction extends Action
             $rolls[$key]         = $roll;
         }
 
-        return $this->respondWithData($rolls);
+        return $this->respondWithData($rolls)
+                    ->withHeader('Access-Control-Allow-Origin', '*')
+                    ->withHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
     }
 }
