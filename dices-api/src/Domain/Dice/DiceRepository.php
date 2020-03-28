@@ -82,7 +82,7 @@ class DiceRepository
             return new Roll($id, $rollData['playerName'], $rollData['rollType'], $rollData['rollResults'], $createdAt);
         } catch (PDOException $e) {
             throw new RuntimeException(
-                $e
+                $e->getMessage()
             );
         }
     }
