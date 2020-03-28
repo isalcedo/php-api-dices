@@ -5,6 +5,7 @@ namespace App\Domain\Dice;
 
 use Carbon\Carbon;
 use PDO;
+use PDOException;
 use RuntimeException;
 
 class DiceRepository
@@ -47,7 +48,7 @@ class DiceRepository
 
         try {
             return $query->fetchAll();
-        } catch (\PDOException $e) {
+        } catch (PDOException $e) {
             throw new RuntimeException(
                 $e
             );
@@ -79,7 +80,7 @@ class DiceRepository
             $id = (int)$this->pdo->lastInsertId();
 
             return new Roll($id, $rollData['playerName'], $rollData['rollType'], $rollData['rollResults'], $createdAt);
-        } catch (\PDOException $e) {
+        } catch (PDOException $e) {
             throw new RuntimeException(
                 $e
             );
