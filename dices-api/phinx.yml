@@ -1,0 +1,17 @@
+paths:
+    migrations: '%%PHINX_CONFIG_DIR%%/db/migrations'
+    seeds: '%%PHINX_CONFIG_DIR%%/db/seeds'
+
+environments:
+    default_migration_table: phinxlog
+    default_database: main
+    main:
+        adapter: sqlite
+        name: ./db/storage/dicesdb
+        suffix: ".db"    # Defaults to ".sqlite3"
+    testing:
+        adapter: sqlite
+        name: ./db/storage/dicesdb_test
+        suffix: ".db"    # Defaults to ".sqlite3"
+
+version_order: creation

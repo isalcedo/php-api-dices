@@ -5,16 +5,6 @@ volumes:
         driver: local
 
 services:
-    mongo:
-        image: mongo
-        restart: always
-        environment:
-            MONGO_INITDB_ROOT_USERNAME: root
-            MONGO_INITDB_ROOT_PASSWORD: develop
-        networks:
-            role_dices:
-                aliases:
-                    - role-dices-table
     nginx:
         build: ./docker-files/nginx
         ports:
@@ -32,12 +22,11 @@ services:
         working_dir: /var/www
         environment:
             docker: "true"
-        depends_on:
-            - mongo
         ports:
             - 9000:9000
         volumes:
             - ./dices-api:/var/www
+            - ./composer.phar:/var/www/composer.phar
         networks:
             role_dices:
                 aliases:
