@@ -33,8 +33,8 @@ class DicesRollsMigration extends AbstractMigration
     {
         $users = $this->table('rolls');
         $users->addColumn('player_name', 'string', ['limit' => 100])
-              ->addColumn('roll_type', 'integer')
-              ->addColumn('roll_result', 'integer')
+              ->addColumn('roll_type', 'string', ['limit' => 50])
+              ->addColumn('roll_result', 'json')
               ->addColumn('created_at', 'datetime')
               ->create();
     }
